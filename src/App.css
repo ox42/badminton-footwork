@@ -15,6 +15,15 @@ div.court-container img.court {
 }
 
 
+@media screen and (orientation:portrait) {
+  div.court-container img.court {
+    width: 100%;
+    height: auto;
+    max-height: 100vh;
+  }
+}
+
+
 .App button.speed-button {
   position: absolute;
   top: 30px;
@@ -65,16 +74,16 @@ div.court-container div.circle-pointer div.timer-element {
   width: 60px;
   height: 60px;
 
-  background-color: white;
+  background-color: rgba(255, 255, 255, 1);
   border-radius: 1%;
-  border: 1px solid #353535;
+  border: 1px solid #000000;
 }
 
 div.court-container div.circle-pointer div.timer-element-percentage {
   height: 0;
   width: 100%;
 
-  background-color: rgba(22, 28, 164, 0.57);
+  background-color: rgba(0, 0, 0, 1);
 }
 
 div.court-container div.circle-pointer.circle-invisible div.timer-element {

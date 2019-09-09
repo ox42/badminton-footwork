@@ -5,6 +5,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 A project allowing you to practice badminton footwork.
 Can be run on a tablet or a desktop/laptop computer.
 
+Allows you to modify the speed (time) between shots. Adds a random delay to better simulate a real badminton rally.
+
 ![Application demo](/app-demo.jpg?raw=true "Application demo")
 
 ### `npm start`

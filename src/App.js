@@ -33,15 +33,15 @@ class App extends React.Component {
     updateScreen() {
 
         const courtNode = this.courtRef.current;
-        this.setState({ circlePointerStyle: { width: courtNode.clientWidth } });
-
+        this.setState({ circlePointerStyle: { width: courtNode.clientWidth, height: courtNode.clientHeight } });
 
         if (!this.state.lastDrawing || (this.state.nextDrawing.getTime() <= new Date().getTime())) {
 
+            let randomDelay = Math.floor(Math.min(this.state.speed * 0.25, 2000) * Math.random());
             let timeLastDrawing = (this.state.nextDrawing) || (new Date());
-            let timeNextDrawing = new Date((timeLastDrawing.getTime()) + this.state.speed + Math.floor(Math.random() * Math.min(2000, this.state.speed * 0.25)));
+            let timeNextDrawing = new Date((timeLastDrawing.getTime()) + this.state.speed + randomDelay);
 
-            let newPosition = Math.floor(Math.random() * 8);
+            let newPosition = Math.floor(Math.random() * 8); //there are 8 important points on badminton court
             this.setState({ position: newPosition, lastDrawing: timeLastDrawing, nextDrawing: timeNextDrawing });
         }
 
@@ -61,6 +61,7 @@ class App extends React.Component {
 
                     <div ref={this.courtPointerRef} style={this.state.circlePointerStyle} className={"circle-pointer circle-" +
                     ((this.state.lastDrawing && (new Date().getTime() - this.state.lastDrawing.getTime() <= Math.max(1200, 2 * this.state.speed / 3))) ? 'visible' : 'invisible')}>
+
                         <div className="circle-element pulse"></div>
                         <img src="/right-arrow.png" className="arrow-element"></img>
 
