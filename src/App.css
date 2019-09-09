@@ -1,33 +1,127 @@
 .App {
+
+}
+
+div.court-container {
+  height: 95vh;
+  width: 100%;
+
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+div.court-container img.court {
+  height: 100%;
+  width: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+.App button.speed-button {
+  position: absolute;
+  top: 30px;
+
+  z-index: 99;
 }
 
-.App-link {
-  color: #61dafb;
+.App button.speed-button.speed-button-plus {
+  right: 100px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.App button.speed-button.speed-button-minus {
+  right: 30px;
+}
+
+
+div.court-container div.circle-pointer {
+  position: absolute;
+  left: 0;
+  right: 0;
+
+  top: 0;
+  margin: auto;
+
+  z-index: 100;
+  height: 100%;
+  width: 100%;
+
+  text-align: center;
+}
+
+div.court-container div.circle-pointer.circle-invisible {
+  display: none;
+}
+
+
+div.court-container div.circle-pointer img.arrow-element {
+  position: absolute;
+  left: 50%;
+  top: 47%;
+
+  width: 100px;
+  height: 100px;
+
+  margin-left: -50px;
+  margin-top: -50px;
+}
+
+div.court-container div.circle-pointer div.circle-element {
+  width: 50px;
+  height: 50px;
+
+  position: absolute;
+  border-radius: 50%;
+  background-color: #ca0000;
+}
+
+div.court-container.court-position-0 div.circle-pointer div.circle-element { top: 43%; right: 75px; }
+div.court-container.court-position-1 div.circle-pointer div.circle-element { top: 10%; right: 75px; }
+div.court-container.court-position-2 div.circle-pointer div.circle-element { top: 10%; left: 0; right: 0; margin-left: auto; margin-right: auto; }
+div.court-container.court-position-3 div.circle-pointer div.circle-element { top: 10%; left: 75px; }
+div.court-container.court-position-4 div.circle-pointer div.circle-element { top: 43%; left: 75px; }
+
+div.court-container.court-position-5 div.circle-pointer div.circle-element { bottom: 10%; left: 75px; }
+div.court-container.court-position-6 div.circle-pointer div.circle-element { bottom: 10%; left: 0; right: 0; margin-left: auto; margin-right: auto; }
+div.court-container.court-position-7 div.circle-pointer div.circle-element { bottom: 10%; right: 75px; }
+
+
+
+div.court-container.court-position-0 div.circle-pointer img.arrow-element { transform: rotate(0deg); }
+div.court-container.court-position-1 div.circle-pointer img.arrow-element { transform: rotate(-45deg); }
+div.court-container.court-position-2 div.circle-pointer img.arrow-element { transform: rotate(-90deg); }
+div.court-container.court-position-3 div.circle-pointer img.arrow-element { transform: rotate(-135deg); }
+div.court-container.court-position-4 div.circle-pointer img.arrow-element { transform: rotate(-180deg); }
+div.court-container.court-position-5 div.circle-pointer img.arrow-element { transform: rotate(-235deg); }
+div.court-container.court-position-6 div.circle-pointer img.arrow-element { transform: rotate(-270deg); }
+div.court-container.court-position-7 div.circle-pointer img.arrow-element { transform: rotate(-305deg); }
+
+
+
+.pulse {
+  box-shadow: 0 0 0 rgba(10, 7, 37, 0.4);
+  animation: pulse 2s infinite;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(10, 7, 37, 0.4);
   }
-  to {
-    transform: rotate(360deg);
+  70% {
+    -webkit-box-shadow: 0 0 0 30px rgba(10, 7, 37, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(10, 7, 37, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(10, 7, 37, 0.4);
+    box-shadow: 0 0 0 0 rgba(10, 7, 37, 0.4);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 10px rgba(10, 7, 37, 0);
+    box-shadow: 0 0 0 30px rgba(10, 7, 37, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(10, 7, 37, 0);
+    box-shadow: 0 0 0 0 rgba(10, 7, 37, 0);
   }
 }
