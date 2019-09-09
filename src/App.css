@@ -46,8 +46,39 @@ div.court-container div.circle-pointer {
   text-align: center;
 }
 
-div.court-container div.circle-pointer.circle-invisible {
+div.court-container div.circle-pointer.circle-invisible div.circle-element, div.court-container div.circle-pointer.circle-invisible img.arrow-element {
   display: none;
+}
+
+div.court-container div.circle-pointer div.timer-element {
+  display: none;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  top: 47%;
+  margin-top: -30px;
+  width: 60px;
+  height: 60px;
+
+  background-color: white;
+  border-radius: 1%;
+  border: 1px solid #353535;
+}
+
+div.court-container div.circle-pointer div.timer-element-percentage {
+  height: 0;
+  width: 100%;
+
+  background-color: rgba(22, 28, 164, 0.57);
+}
+
+div.court-container div.circle-pointer.circle-invisible div.timer-element {
+  display: block;
 }
 
 
@@ -69,6 +100,8 @@ div.court-container div.circle-pointer div.circle-element {
 
   position: absolute;
   border-radius: 50%;
+
+  border: 1px solid #7c0000;
   background-color: #ca0000;
 }
 

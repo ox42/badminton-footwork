@@ -5,6 +5,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 A project allowing you to practice badminton footwork.
 Can be run on a tablet or a desktop/laptop computer.
 
+![Application demo](/app-demo.jpg?raw=true "Application demo")
+
 ### `npm start`
 
 Runs the app in the development mode.<br>

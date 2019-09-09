@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends React.Component {
@@ -10,6 +9,7 @@ class App extends React.Component {
             speed: 2000,
             position: 0,
             lastDrawing: null,
+            nextDrawing: null,
 
             circlePointerStyle: { width: '100%' }
         };
@@ -20,7 +20,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        this.containerInterval = setInterval(() => { this.updateScreen(); }, 100);
+        this.containerInterval = setInterval(() => { this.updateScreen(); }, 30);
     }
 
     componentWillUnmount() {
@@ -36,11 +36,16 @@ class App extends React.Component {
         this.setState({ circlePointerStyle: { width: courtNode.clientWidth } });
 
 
-        if (!this.state.lastDrawing || (new Date().getTime() - this.state.lastDrawing.getTime() >= this.state.speed)) {
+        if (!this.state.lastDrawing || (this.state.nextDrawing.getTime() <= new Date().getTime())) {
+
+            let timeLastDrawing = (this.state.nextDrawing) || (new Date());
+            let timeNextDrawing = new Date((timeLastDrawing.getTime()) + this.state.speed + Math.floor(Math.random() * Math.min(2000, this.state.speed * 0.25)));
+
             let newPosition = Math.floor(Math.random() * 8);
-            this.setState({ position: newPosition, lastDrawing: new Date() });
+            this.setState({ position: newPosition, lastDrawing: timeLastDrawing, nextDrawing: timeNextDrawing });
         }
 
+        this.forceUpdate();
     }
 
     render() {
@@ -55,10 +60,13 @@ class App extends React.Component {
                     <img className="court" src='/badminton-side.jpg' ref={this.courtRef} />
 
                     <div ref={this.courtPointerRef} style={this.state.circlePointerStyle} className={"circle-pointer circle-" +
-                    ((this.state.lastDrawing && (new Date().getTime() - this.state.lastDrawing.getTime() <= Math.max(1500, 2 * this.state.speed / 3))) ? 'visible' : 'invisible')}>
-
+                    ((this.state.lastDrawing && (new Date().getTime() - this.state.lastDrawing.getTime() <= Math.max(1200, 2 * this.state.speed / 3))) ? 'visible' : 'invisible')}>
                         <div className="circle-element pulse"></div>
                         <img src="/right-arrow.png" className="arrow-element"></img>
+
+                        <div className="timer-element" style={{ visibility: (((!this.state.nextDrawing) || (this.state.nextDrawing.getTime() - new Date().getTime() >= 1500))) ? 'hidden' : 'visible' }}>
+                            <div className="timer-element-percentage" style={{ height: (((!this.state.nextDrawing) || (this.state.nextDrawing.getTime() - new Date().getTime() >= 1000))) ? 0 : Math.round(100 - ((this.state.nextDrawing.getTime() - new Date().getTime()) / 1000.0) * 100) + '%' }}></div>
+                        </div>
                     </div>
 
                 </div>
