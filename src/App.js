@@ -38,13 +38,14 @@ class App extends React.Component {
         if (!this.state.lastDrawing || (this.state.nextDrawing.getTime() <= new Date().getTime())) {
 
             let randomDelay = Math.floor(Math.min(this.state.speed * 0.25, 2000) * Math.random());
-            let timeLastDrawing = (this.state.nextDrawing) || (new Date());
+            let timeLastDrawing = new Date();
             let timeNextDrawing = new Date((timeLastDrawing.getTime()) + this.state.speed + randomDelay);
 
             let newPosition = Math.floor(Math.random() * 8); //there are 8 important points on badminton court
             this.setState({ position: newPosition, lastDrawing: timeLastDrawing, nextDrawing: timeNextDrawing });
         }
 
+        //rerender the progress bar on every tick
         this.forceUpdate();
     }
 
