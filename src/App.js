@@ -58,13 +58,13 @@ class App extends React.Component {
 
                 <div className={"court-container court-position-" + this.state.position}>
 
-                    <img className="court" src='/badminton-side.jpg' ref={this.courtRef} />
+                    <img className="court" alt="court" src='/badminton-side.jpg' ref={this.courtRef} />
 
                     <div ref={this.courtPointerRef} style={this.state.circlePointerStyle} className={"circle-pointer circle-" +
                     ((this.state.lastDrawing && (new Date().getTime() - this.state.lastDrawing.getTime() <= Math.max(1200, 2 * this.state.speed / 3))) ? 'visible' : 'invisible')}>
 
                         <div className="circle-element pulse"></div>
-                        <img src="/right-arrow.png" className="arrow-element"></img>
+                        <img alt="arrow" src="/right-arrow.png" className="arrow-element"></img>
 
                         <div className="timer-element" style={{ visibility: (((!this.state.nextDrawing) || (this.state.nextDrawing.getTime() - new Date().getTime() >= 1500))) ? 'hidden' : 'visible' }}>
                             <div className="timer-element-percentage" style={{ height: (((!this.state.nextDrawing) || (this.state.nextDrawing.getTime() - new Date().getTime() >= 1000))) ? 0 : Math.round(100 - ((this.state.nextDrawing.getTime() - new Date().getTime()) / 1000.0) * 100) + '%' }}></div>
